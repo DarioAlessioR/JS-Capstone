@@ -1,63 +1,109 @@
-//import _ from 'lodash';
+
 import './style.css';
-import sum from './modules/prueba.js';
+
+
+const urlFood = 'https://www.themealdb.com/api/json/v1/1/categories.php';
+const urlData = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
+const urlDataId = 'Lg1NwTSFJSG37nTmEN8x'
+const urlDataLikes = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${urlDataId}/likes/`
+const urlDataComments = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${urlDataId}/comments/`
+
+const url2 = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/4UvdTn5NAXeyK3iSlBaQ/likes/';
+
 
 const getData = async () => {
-    const url = 'https://www.themealdb.com/api/json/v1/1/categories.php';
-    const url2 = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/4UvdTn5NAXeyK3iSlBaQ/likes/';
-    const results = await fetch(url);
-    const results2 = await fetch(url2, {
-      method: 'GET',
+  const results = await fetch(urlFood);
+  const results2 = await fetch(urlDataLikes, {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  });
+  const mealObj = await results.json();
+  const result = mealObj.categories;
+  const likesObj = await results2.json();
+  printfood(result, likesObj);
+  return result;
+};
+
+const printfood = (result, likesObj) => {
+  const prueba1 = document.getElementById('prueba1');
+  prueba1.innerHTML = '';
+  result.forEach(element => {
+    const v = element.idCategory;
+    const x = element.strCategory;
+    const z = element.strCategoryThumb;
+    for (let i = 0; i < likesObj.length; i += 1) {
+      let w = '';
+      if (likesObj[i].item_id === v) {
+        w = likesObj[i].likes;
+         
+        const food = document.createElement('li')
+        food.innerHTML = `
+        <img class="platillo-img" src=${z} alt="">
+        <div class="platillo-content">
+            <p class="platillo-title">${x}</p>
+
+            <p class="platillo-likes"><span class="likes">${w}</span>
+            
+            <span class="heart" id=${v}>&#10084</span> likes</p>
+        </div>
+        <div class="platillo-buttons">
+            <button class="platillo-comments" id="comments" type="button">Comments</button>
+            <button class="platillo-reservations" id="reservations" type="button">Reservations</button>
+        </div>
+        `;
+        prueba1.appendChild(food);
+      }
+    }
+  });
+  const hearts = document.querySelectorAll('.heart')
+  captureLike(hearts);
+};
+
+const captureLike = (hearts) => {
+   
+  hearts.forEach(element => {
+    element.addEventListener('click', () => {
+        
+      postLike(element.id);
+    });
+  })
+};
+
+const postLike = async (id) => {
+  const response = await fetch(urlDataLikes, {
+    method: 'POST',
+    body: JSON.stringify({
+      item_id: id
+    }),
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
+    },
+  })
+  const data = await response.text();
+  getData();
+  return data;
+}
+
+getData();
+
+
+/*
+const newApp = async () => {
+  const response = await fetch(
+    urlData,
+    {
+      method: 'POST',
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
-    });
-    const mealObj = await results.json();
-    const likesObj = await results2.json();
-    const result = mealObj.categories;
-  
-   // displayList(result, likesObj);
-  
-   console.log(mealObj)
-  console.log(result)
-  
-  printfood(result);
-    return result;
-  };
-  
-  
-  const printfood = (result) => {
-    result.forEach(element => {
-    
-      const x = element.strCategory;
-      // const y = element.strCategoryDescription;
-      const z = element.strCategoryThumb;
-      
-      const img1 = document.createElement('img')
-      img1.setAttribute('src', z)
-    
-      const food = document.createElement('li')
-      food.setAttribute('class', 'food');
-      food.appendChild(img1);
-      
-      /* const food1 = document.createElement('h3')
-      food1.setAttribute('class', 'food1');
-      food1.innerHTML = `${x}`; */
-  
-      const food2 = document.createElement('p')
-      food2.setAttribute('class', 'food2');
-      food2.innerHTML = `${y}`;
-  
-      food.appendChild(food1);
-      food.appendChild(food2);
-  
-      const prueba1 = document.getElementById('prueba1');
-      prueba1.appendChild(food);
-  
-    });
-  }
-  
-  
-  getData();
+    },
+  );
+  const id = await response.text();
+  console.log(id);
+  return id;
+};
 
-  /* ID   Lg1NwTSFJSG37nTmEN8x */
+newApp();
+*/
