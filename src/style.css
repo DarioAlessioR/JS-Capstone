@@ -67,8 +67,9 @@ header {
 }
 
 .logo {
-  width: 5rem;
-  height: 5rem;
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 700;
 }
 
 .burger-icon {
@@ -106,7 +107,7 @@ header {
   }
 
   .nav-links li {
-    border-bottom: 0.1rem solid #fff;
+    border: none;
     padding-bottom: 0.5rem;
     transition: all 0.5s ease;
   }
@@ -114,6 +115,7 @@ header {
   .nav-links li:hover {
     cursor: pointer;
     background-color: #fff;
+    border: none;
     color: rgb(0, 115, 160);
     border-radius: 0.7rem;
     padding: 0.5rem;
@@ -121,6 +123,14 @@ header {
 }
 
 /* MAIN */
+.counter1 {
+  margin: 0;
+  font-size: 3rem;
+  text-align: center;
+  font-weight: 700;
+  color: #fff;
+}
+
 main ul {
   display: grid;
   grid-template-columns: repeat(1, 1fr);

@@ -1,12 +1,12 @@
+/* eslint-disable arrow-parens */
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-unused-vars */
 import './style.css';
 
 const urlFood = 'https://www.themealdb.com/api/json/v1/1/categories.php';
-const urlData = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
 const urlDataId = 'Lg1NwTSFJSG37nTmEN8x';
 const urlDataLikes = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${urlDataId}/likes/`;
 const urlDataComments = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${urlDataId}/comments/`;
-
-const url2 = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/4UvdTn5NAXeyK3iSlBaQ/likes/';
 
 const getData = async () => {
   const results = await fetch(urlFood);
@@ -20,7 +20,17 @@ const getData = async () => {
   const result = mealObj.categories;
   const likesObj = await results2.json();
   printfood(result, likesObj);
+  countFoods(result);
   return result;
+};
+
+const countFoods = (result) => {
+  const counter1 = document.querySelector('.counter1');
+  let foodCounter = 0;
+  result.forEach(element => {
+    foodCounter += 1;
+  });
+  counter1.innerHTML = `Number of items: ${foodCounter}`;
 };
 
 const printfood = (result, likesObj) => {
@@ -85,22 +95,3 @@ const postLike = async (id) => {
 };
 
 getData();
-
-/*
-const newApp = async () => {
-  const response = await fetch(
-    urlData,
-    {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    },
-  );
-  const id = await response.text();
-  console.log(id);
-  return id;
-};
-
-newApp();
-*/
