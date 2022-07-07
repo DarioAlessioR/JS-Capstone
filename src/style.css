@@ -15,6 +15,10 @@ body {
   font-family: "Caveat", cursive;
 }
 
+#close {
+  display: none;
+}
+
 h1,
 h2,
 h3,
