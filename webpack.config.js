@@ -23,7 +23,7 @@ module.exports = {
   optimization: {
     runtimeChunk: 'single',
   },
-  
+
   module: {
     rules: [
       {
@@ -32,5 +32,5 @@ module.exports = {
       },
     ],
   },
-  mode: 'development'
+  mode: 'development',
 };
