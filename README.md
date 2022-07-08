@@ -1,4 +1,3 @@
-![](https://img.shields.io/badge/Microverse-blueviolet)
 
 # Project Name: JavaScript capstone project - Your API-based webapp
 
