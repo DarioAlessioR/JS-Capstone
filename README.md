@@ -87,9 +87,6 @@ If needed, please visit: https://webpack.js.org/guides/getting-started/
 
 - Please visit:  
 
-## Live demo video:
-
-- Please watch this video for more details: 
 
 ## Authors
 
