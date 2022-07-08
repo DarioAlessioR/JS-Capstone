@@ -87,7 +87,7 @@ If needed, please visit: https://webpack.js.org/guides/getting-started/
 
 - Please visit:  
 
-https://maury18.github.io/JavaScript-Capstone/
+https://maury18.github.io/JavaScript-Capstone/dist
 
 ## Authors
 
