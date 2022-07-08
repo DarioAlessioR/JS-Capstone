@@ -1,42 +1,18 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable no-undef */
 /* eslint-disable arrow-parens */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-unused-vars */
-import { result } from 'lodash';
-import './style.css';
 
-const urlFood = 'https://www.themealdb.com/api/json/v1/1/categories.php';
-const urlData = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
+import './style.css';
+import getData from './modules/getdata.js';
+import countFoods from './modules/countfoods.js';
+import captureLike from './modules/capturelike.js';
+
 const urlDataId = 'Lg1NwTSFJSG37nTmEN8x';
 const urlDataLikes = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${urlDataId}/likes/`;
 const urlDataPostComments = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${urlDataId}/comments/`;
 const urlDataGetComments = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${urlDataId}/comments?item_id=`;
-
-const getData = async () => {
-  const results = await fetch(urlFood);
-  const results2 = await fetch(urlDataLikes, {
-    method: 'GET',
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-  });
-  const mealObj = await results.json();
-  const result = mealObj.categories;
-  const likesObj = await results2.json();
-  printfood(result, likesObj);
-  countFoods(result);
-  // captureCommentsClicks(result);
-  return result;
-};
-
-const countFoods = (result) => {
-  const counter1 = document.querySelector('.counter1');
-  let foodCounter = 0;
-  result.forEach(element => {
-    foodCounter += 1;
-  });
-  counter1.innerHTML = `Number of items: ${foodCounter}`;
-};
 
 const printfood = (result, likesObj) => {
   const prueba1 = document.getElementById('prueba1');
@@ -78,22 +54,12 @@ const printfood = (result, likesObj) => {
   captureLike(hearts);
 };
 
-const captureLike = (hearts) => {
-  hearts.forEach((element) => {
-    element.addEventListener('click', () => {
-      postLike(element.id);
-    });
-  });
-};
-
 const captureCommentsClicks = (commentbuttons, result) => {
   commentbuttons.forEach(element => {
     element.addEventListener('click', () => {
       const button = element.id.slice(8);
       openPopup(button, result);
-      const overFlow = document.querySelector('html');
       const popup = document.querySelector('.popup');
-      // overFlow.style.overflowY = ('hidden');
       popup.style.display = ('block');
     });
   });
@@ -142,8 +108,6 @@ const openPopup = (button, result) => {
   const closepopup = document.querySelector('.closepopup');
   closepopup.addEventListener('click', () => {
     const popup = document.querySelector('.popup');
-    const overFlow = document.querySelector('html');
-    // overFlow.style.overflowY = ('visible');
     popup.style.display = ('none');
     popup.removeChild(popupContent);
     popup.removeChild(counter2);
@@ -218,8 +182,6 @@ const postDataComments = async (id, user, usercomment) => {
   return data;
 };
 
-// postDataComments()
-
 const getDataComments = async (id) => {
   const results3 = await fetch(`${urlDataGetComments}${id}`);
   const commentsObj = await results3.json();
@@ -237,6 +199,8 @@ const countComments = (commentsObj) => {
   counter2.innerHTML = `Number of comments: ${commentsCounter}`;
 };
 
-// getDataComments();
-
 getData();
+
+export {
+  printfood, countFoods, captureCommentsClicks, captureLike, postLike,
+};
