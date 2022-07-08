@@ -1,9 +1,11 @@
-const mockcountFoods = (arr) => {
-    let foodCounter = 0;
-    arr.forEach(element => {
-      foodCounter += 1;
-    });
-    return foodCounter;
-  };
+/* eslint-disable no-unused-vars */
 
-  export default mockcountFoods;
+const mockcountFoods = (arr) => {
+  let foodCounter = 0;
+  arr.forEach((element) => {
+    foodCounter += 1;
+  });
+  return foodCounter;
+};
+
+export default mockcountFoods;

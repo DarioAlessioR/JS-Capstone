@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable no-undef */
 /* eslint-disable arrow-parens */
 /* eslint-disable no-use-before-define */
@@ -12,7 +13,6 @@ const urlDataId = 'Lg1NwTSFJSG37nTmEN8x';
 const urlDataLikes = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${urlDataId}/likes/`;
 const urlDataPostComments = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${urlDataId}/comments/`;
 const urlDataGetComments = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${urlDataId}/comments?item_id=`;
-
 
 const printfood = (result, likesObj) => {
   const prueba1 = document.getElementById('prueba1');
@@ -201,4 +201,6 @@ const countComments = (commentsObj) => {
 
 getData();
 
-export { printfood, countFoods, captureCommentsClicks, captureLike, postLike };
+export {
+  printfood, countFoods, captureCommentsClicks, captureLike, postLike,
+};

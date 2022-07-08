@@ -1,6 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/no-cycle */
 import { countFoods, printfood } from '../index.js';
-
-
 
 const urlFood = 'https://www.themealdb.com/api/json/v1/1/categories.php';
 const urlData = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
@@ -24,4 +24,3 @@ const getData = async () => {
 };
 
 export default getData;
- 
