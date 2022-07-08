@@ -1,5 +1,5 @@
 
-# Project Name: JavaScript capstone project - Your API-based webapp
+# Project Name: JavaScript capstone project - Your API-based webapp.
 
 A web application based on an external API that provides data about food. The webapp have 2 user interfaces.
 
