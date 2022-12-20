@@ -306,9 +306,11 @@ main ul li {
 }
 
 .image-container2 {
-  width: 10rem;
-  height: 10rem;
+  display: flex;
+  width: 40%;
+  height: auto;
   margin: 2rem auto;
+  justify-content: center;
 }
 
 .platillo-img2 {
