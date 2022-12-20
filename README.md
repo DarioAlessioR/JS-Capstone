@@ -71,7 +71,7 @@ User stories followed:
 
 - Clone the repository in your local machine using git clone and the following link:
 
-https://github.com/maury18/JavaScript-Capstone.git
+https://github.com/DarioAlessioR/JS-Capstone.git
 
 - Install webpack using the following instructions:
 
@@ -86,7 +86,7 @@ If needed, please visit: https://webpack.js.org/guides/getting-started/
 
 - Please visit:  
 
-https://maury18.github.io/JavaScript-Capstone/dist
+https://house-speciality.netlify.app/
 
 ## Authors
 
