@@ -54,8 +54,9 @@ ul li {
 
 /* UTILITIES */
 .container {
-  width: 95%;
+  max-width: 120rem;
   margin: 0 auto;
+  padding: 0 2rem;
 }
 
 .center-text {
@@ -65,7 +66,7 @@ ul li {
 /* HEADER */
 header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 6rem;
   padding-top: 4rem;
@@ -130,7 +131,6 @@ header {
 
 /* MAIN */
 .counter1 {
-  margin: 0;
   font-size: 3rem;
   text-align: center;
   font-weight: 700;
@@ -142,6 +142,7 @@ main ul {
   grid-template-columns: repeat(1, 1fr);
   column-gap: 2rem;
   row-gap: 2rem;
+  margin-left: -40px;
 }
 
 main ul li {
