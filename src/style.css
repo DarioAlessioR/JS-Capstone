@@ -312,8 +312,8 @@ main ul li {
 }
 
 .platillo-img2 {
-  width: 100%;
-  height: 100%;
+  width: 500%;
+  height: auto;
   border-radius: 0.5rem;
   display: block;
 }
