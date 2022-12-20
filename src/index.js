@@ -41,7 +41,7 @@ const printfood = (result, likesObj) => {
     </div>
     <div class="platillo-buttons">
     <button class="platillo-comments" id="comments${v}" type="button">Comments</button>
-    <button class="platillo-reservations" id="reservations" type="button">Reservations</button>
+    
     </div>
         `;
         prueba1.appendChild(food);
