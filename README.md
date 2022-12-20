@@ -3,7 +3,7 @@
 
 A web application based on an external API that provides data about food. The webapp have 2 user interfaces.
 
-The wireframe to be followed can be seen on this link :
+The wireframe to be followed can be seen on this link:
 
 For homepage:
 
